@@ -5,36 +5,34 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Questions') }}</div>
-
+                <div class="card-header">{{ __('Choices') }}</div>
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                         <p>{{ $message }}</p>
                     </div>
                 @endif  
                 <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('questions.create') }}"> Create New Question</a>
-                </div>  
+                    <a class="btn btn-success" href="{{ route('choice.create',$questions->questions_id) }}"> Create New Choice</a>
+                </div>    
                 <div class="card-body">
-                        
+                    <div class="form-group">
+                        <strong>Question:</strong>
+                        {{ $questions->question }}
+                    </div>
+
                     <table class="table table-bordered">
                         <tr>
                             <th>ID</th>
-                            <th>Questions</th>
-                            <th>Multiple Answer</th>
+                            <th>Choice</th>
                             <th width="280px">Action</th>
                         </tr>
-                        @foreach ($questions as $question)
+                        @foreach ($choices as $choice)
                         <tr>
-                            <td>{{ $question->questions_id }}</td>
-                            <td>{{ $question->question }}</td>
-                            <td>{{ $question->multiple_answer }}</td>
+                            <td>{{ $choice->choice_id }}</td>
+                            <td>{{ $choice->choice_text }}</td>
                             <td>
-                                <form action="{{ route('questions.destroy',$question->questions_id) }}" method="POST">
-                   
-                                    <a class="btn btn-info" href="{{ route('choice.index',$question->questions_id) }}">Choices</a>
-                    
-                                    <a class="btn btn-primary" href="{{ route('questions.edit',$question->questions_id) }}">Edit</a>
+                                <form action="{{ route('choice.destroy',$choice->choice_id) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('choice.edit',$choice->choice_id) }}">Edit</a>
                    
                                     @csrf
                                     @method('DELETE')
@@ -46,7 +44,7 @@
                         @endforeach
                     </table>
   
-                    {!! $questions->links() !!}
+                    {!! $choices->links() !!}
                 </div>
             </div>
         </div>

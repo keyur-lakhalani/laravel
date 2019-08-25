@@ -21,3 +21,16 @@ Route::get('/', function () {
 Auth::routes();
 Route::resource('questions','questionsController');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('choice/{question}', 'ChoiceController@index')
+		->name('choice.index');
+Route::post('choice/{question}', 'ChoiceController@store')
+		->name('choice.store');
+Route::get('choice/create/{question}','ChoiceController@create')
+		->name('choice.create');
+Route::delete('choice/{choice}', 'ChoiceController@destroy')
+		->name('choice.destroy');		
+Route::get('choice/{choice}/edit', 'ChoiceController@edit')
+		->name('choice.edit');
+Route::put('choice/{choice}', 'ChoiceController@update')
+		->name('choice.update');
+
