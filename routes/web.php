@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/','IndexController@index')->name('vote');
+Route::post('/','IndexController@store')->name('vote.store');
 /*Route::get('/questions', function () { //example.com/questions
     return view('questions');
 });*/

@@ -10,14 +10,14 @@ class CreateVoteTable extends Migration
      * Run the migrations.
      *
      * @return void
-     */
+     */vote
     public function up()
     {
         Schema::create('vote', function (Blueprint $table) {
             $table->bigIncrements('vote_id');
             $table->unsignedBigInteger('choice_id');
-            $table->string('user_ip', 20);
-            $table->unsignedBigInteger('user_id');
+            $table->string('user_ip', 20)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('choice_id')
