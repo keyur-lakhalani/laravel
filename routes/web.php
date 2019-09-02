@@ -19,6 +19,7 @@ Route::post('/','IndexController@store')->name('vote.store');
 Auth::routes();
 Route::resource('questions','questionsController');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@index')->name('profile');
 Route::get('choice/{question}', 'ChoiceController@index')
 		->name('choice.index');
 Route::post('choice/{question}', 'ChoiceController@store')

@@ -76,6 +76,17 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <main class="py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    @foreach($links as $link)
+                       <a href="{{$link['link']}}">{{$link['name']}}</a>&nbsp;&nbsp;   
+                    @endforeach
+                </div>
+            </div>        
+        </main>    
+
     </div>
 </body>
 </html>
