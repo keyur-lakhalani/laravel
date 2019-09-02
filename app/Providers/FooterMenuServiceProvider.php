@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class FooterMenuServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,13 @@ class FooterMenuServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind('commonHelper', function()
+
+        {
+
+            return new \App\Helpers\CommonHelperClass;
+
+        });
     }
 
     /**

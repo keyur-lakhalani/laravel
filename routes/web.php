@@ -33,3 +33,8 @@ Route::get('choice/{choice}/edit', 'ChoiceController@edit')
 Route::put('choice/{choice}', 'ChoiceController@update')
 		->name('choice.update');
 
+Route::get('/testByte', function(){
+
+    dd(commonHelper::sizeFilter('154004'));
+
+});
